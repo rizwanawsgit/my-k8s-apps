@@ -1,0 +1,19 @@
+# values.yaml
+server:
+  service:
+    type: NodePort
+  config:
+    # Admin password set to "admin123" (Bcrypt hash)
+    admin.password: "$2a$10$7R7nU.v6pY.t4vA.9Y1uGeu2r0lK.9v1S2W3X4Y5Z6A7B8C9D0E1F"
+    admin.passwordMtime: "2024-01-01T00:00:00Z"
+
+configs:
+  params:
+    server.insecure: true # HTTP testing ke liye asaan hai
+  cm:
+    # 1. User create karna (Ali ko login ki ijazat dena)
+    accounts.dev-user: login, apiKey
+
+    # Purani branding settings rehne dein
+    ui.bannercontent: "🚀 ARGO-CD: USER DEMO MODE"
+    ui.bannerurl: "https://hypersofttech.com"

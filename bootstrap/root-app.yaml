@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: master-root
+  namespace: argocd
+spec:
+  project: lab-project
+  source:
+    repoURL: https://github.com/rizwanawsgit/my-k8s-apps.git
+    targetRevision: HEAD
+    path: apps # <--- Yeh point kar raha hai us folder ko jahan apps hain
+    directory:
+      recurse: true # Sub-folders ko bhi check karega
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

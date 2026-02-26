@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: lab-project
+  namespace: argocd
+spec:
+  description: "Project for App-of-Apps Lab"
+  sourceRepos:
+  - '*' 
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: '*' # Sab namespaces allow hain
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
