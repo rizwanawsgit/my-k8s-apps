@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-self-managed
+  name: argocd-manager # Naam thora change kar dein taake confusion na ho
   namespace: argocd
 spec:
   project: lab-project
   source:
-    repoURL: https://argoproj.github.io/argo-helm # Helm repo ka link
+    repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
-    targetRevision: 7.x.x # Helm chart version
+    targetRevision: 7.x.x  # Apna current chart version check kar lein
     helm:
-      # Yeh sab se important part hai: Aapki Git wali values file
+      # YE HAI SAB SE IMPORTANT LINE
+      releaseName: argocd  # <--- Yeh wahi naam hai jo 'helm install' mein use hua
       valueFiles:
-        - "https://raw.githubusercontent.com/rizwanawsgit/my-k8s-apps/main/argocd-install/values.yaml"
+        - "https://raw.githubusercontent.com/YOUR_USERNAME/my-k8s-apps/main/argocd-install/values.yaml"
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
