@@ -13,8 +13,10 @@ configs:
     accounts.ali: login
     accounts.ahmed: login
     accounts.rizwan: login
+    accounts.adnan: login
   rbac:
     policy.csv: |
       g, ali, role:admin
       g, ahmed, role:admin
       g, rizwan, role:admin
+      g, adnan, role:admin
