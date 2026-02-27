@@ -4,9 +4,21 @@ metadata:
   name: lab-project
   namespace: argocd
 spec:
-  description: "Declarative Lab Project"
+  description: "Declarative Lab Project with Cluster Permissions"
+  # 1. Allow sources
   sourceRepos:
   - '*'
+  # 2. Allow destinations
   destinations:
   - server: https://kubernetes.default.svc
     namespace: '*'
+  
+  # 3. IMPORTANT: Allow Cluster-level resources (CRDs, RBAC)
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+    
+  # 4. Allow all namespace-level resources
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
