@@ -13,6 +13,8 @@ configs:
   cm:
     # 1. User create karna (Ali ko login ki ijazat dena)
     accounts.dev-user: login, apiKey
+    accounts.prod-user: login, apiKey
+    accounts.rizwan-user: login, apiKey
 
     # Purani branding settings rehne dein
     ui.bannercontent: "🚀 ARGO-CD: USER DEMO MODE"
