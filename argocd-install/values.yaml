@@ -1,0 +1,9 @@
+global:
+  domain: argocd.example.com
+
+server:
+  replicas: 1
+
+configs:
+  params:
+    server.insecure: true
