@@ -3,6 +3,8 @@ global:
 
 server:
   replicas: 1
+  service:
+    type: LoadBalancer
 
 configs:
   params:
