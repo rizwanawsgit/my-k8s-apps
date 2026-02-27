@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-manager # Naam thora change kar dein taake confusion na ho
+  name: argocd-manager
   namespace: argocd
 spec:
   project: lab-project
   source:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
-    targetRevision: 7.x.x  # Apna current chart version check kar lein
+    # 1. Isay hamesha specific version par rakhein (Jo 'helm list -n argocd' mein nazar aaye)
+    targetRevision: 7.9.1 
     helm:
-      # YE HAI SAB SE IMPORTANT LINE
-      releaseName: argocd  # <--- Yeh wahi naam hai jo 'helm install' mein use hua
+      releaseName: argocd 
       valueFiles:
         - "https://raw.githubusercontent.com/rizwanawsgit/my-k8s-apps/main/argocd-install/values.yaml"
   destination:
@@ -21,3 +21,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    # 2. Yeh options collision aur "Too many pods" ko rokne ke liye hain
+    syncOptions:
+      - CreateNamespace=false
+      - ServerSideApply=true  # Force sync ke bajaye smoothly resources merge karega
+      - RespectIgnoreDifferences=true

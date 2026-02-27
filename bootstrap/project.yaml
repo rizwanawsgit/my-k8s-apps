@@ -4,18 +4,9 @@ metadata:
   name: lab-project
   namespace: argocd
 spec:
-  description: "Project for App-of-Apps Lab"
-  # 1. Allow sources from your repo
+  description: "Declarative Lab Project"
   sourceRepos:
-  - '*' 
-  # 2. Allow destinations to any namespace in the cluster
+  - '*'
   destinations:
   - server: https://kubernetes.default.svc
     namespace: '*'
-  # 3. IMPORTANT: Allow creating Application and AppProject resources
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
-  namespaceResourceWhitelist:
-  - group: '*'
-    kind: '*'
