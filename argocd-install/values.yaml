@@ -11,6 +11,8 @@ configs:
     server.insecure: true
   cm:
     accounts.ali: login
+    accounts.ahmed: login
   rbac:
     policy.csv: |
       g, ali, role:admin
+      g, ahmed, role:admin
