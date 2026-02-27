@@ -11,3 +11,6 @@ configs:
     server.insecure: true
   cm:
     accounts.ali: login
+  rbac:
+    policy.csv: |
+      g, ali, role:admin
