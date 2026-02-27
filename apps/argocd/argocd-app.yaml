@@ -13,7 +13,7 @@ spec:
       # YE HAI SAB SE IMPORTANT LINE
       releaseName: argocd  # <--- Yeh wahi naam hai jo 'helm install' mein use hua
       valueFiles:
-        - "https://raw.githubusercontent.com/YOUR_USERNAME/my-k8s-apps/main/argocd-install/values.yaml"
+        - "https://raw.githubusercontent.com/rizwanawsgit/my-k8s-apps/main/argocd-install/values.yaml"
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
