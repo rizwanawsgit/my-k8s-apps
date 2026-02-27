@@ -7,14 +7,17 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
-  source:
-    repoURL: https://argoproj.github.io/argo-helm
-    chart: argo-cd
-    targetRevision: 7.9.1
-    helm:
-      releaseName: argocd
-      valueFiles:
-        - "https://raw.githubusercontent.com/rizwanawsgit/my-k8s-apps/main/argocd-install/values.yaml"
+  sources:
+    - repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: 7.9.1
+      helm:
+        releaseName: argocd
+        valueFiles:
+          - $values/argocd-install/values.yaml
+    - repoURL: https://github.com/rizwanawsgit/my-k8s-apps.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -24,5 +27,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=false
-      #- ServerSideApply=true
       - RespectIgnoreDifferences=true
