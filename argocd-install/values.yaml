@@ -9,3 +9,5 @@ server:
 configs:
   params:
     server.insecure: true
+  cm:
+    accounts.ali: login
